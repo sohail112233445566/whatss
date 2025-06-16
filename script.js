@@ -15,7 +15,21 @@ auth.onAuthStateChanged(user => {
   if (user) {
     document.getElementById('auth-section').style.display = 'none';
     document.getElementById('chat-section').style.display = 'block';
-    listenForMessages();
+    function listenForMessages() {
+  db.collection("messages")
+    .orderBy("timestamp")
+    .onSnapshot(snapshot => {
+      const messagesDiv = document.getElementById("messages");
+      messagesDiv.innerHTML = ""; // نعيد ملء الرسائل كل مرة
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        const p = document.createElement("p");
+        p.innerHTML = `<strong>${data.user}:</strong> ${data.message}`;
+        messagesDiv.appendChild(p);
+      });
+    });
+}
+
   } else {
     document.getElementById('auth-section').style.display = 'block';
     document.getElementById('chat-section').style.display = 'none';
