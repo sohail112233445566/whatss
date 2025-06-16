@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>ChatApp</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="auth-section">
+    <h2>تسجيل الدخول / إنشاء حساب</h2>
+    <input type="email" id="email" placeholder="الإيميل">
+    <input type="password" id="password" placeholder="كلمة المرور">
+    <button onclick="signup()">إنشاء حساب</button>
+    <button onclick="login()">دخول</button>
+  </div>
+
+  <div id="chat-section" style="display:none;">
+    <h2>مرحبا بك 👋</h2>
+    <div id="messages"></div>
+    <input type="text" id="messageInput" placeholder="اكتب رسالة...">
+    <button onclick="sendMessage()">إرسال</button>
+    <button onclick="logout()">خروج</button>
+  </div>
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
